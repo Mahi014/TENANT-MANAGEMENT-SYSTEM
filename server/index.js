@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//routes
+//Login
 app.post("/login", async (req,res)=>{
     try{
         const {username, password} = req.body;
@@ -30,6 +30,8 @@ app.post("/login", async (req,res)=>{
         console.error(err.message);
     }
 });
+
+//Routes for CRUD
     
 
 app.listen(5000,()=>{

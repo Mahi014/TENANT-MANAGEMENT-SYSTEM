@@ -34,10 +34,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={{ width: '300px', margin: '100px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '10px' }}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '10px' }}>
+    <div className='container flex  flex-col  justify-center items-center w-screen h-screen bg-blue-500 text-white'>
+      <form onSubmit={handleSubmit} className='border-2 border-white p-8 rounded-lg flex flex-col items-center space-y-4'>
+        <h2 className='text-3xl font-bold'>Login</h2>
+        <div className='flex flex-col space-y-1 text-lg'>
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -45,11 +45,11 @@ const LoginPage = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+            className='border-2 border-gray-200 rounded-lg text-black outline-blue-600'
           />
         </div>
 
-        <div style={{ marginBottom: '10px' }}>
+        <div className='flex flex-col space-y-1 text-lg'>
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -57,26 +57,14 @@ const LoginPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+            className='border-2 border-gray-200 rounded-lg text-black outline-blue-600'
           />
         </div>
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p className='text-red-600 text-sm'>{error}</p>}
 
-        <button
-          type="submit"
-          style={{
-            width: '100%',
-            padding: '10px',
-            backgroundColor: '#007bff',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
-        >
-          Login
-        </button>
+        <button type='submit' className="m-1 bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Login</button>
+
       </form>
     </div>
   );
