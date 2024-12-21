@@ -9,8 +9,6 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-
     try {
       const body = { username, password };
       const response = await fetch('http://localhost:5000/login', {

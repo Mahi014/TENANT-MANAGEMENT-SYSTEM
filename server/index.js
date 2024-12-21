@@ -17,8 +17,6 @@ app.post("/login", async (req, res) => {
         const user = result.rows[0];
         const adminUsername = user.username;
         const adminPassword = user.password
-
-        console.log(user);
         if (username === adminUsername && password === adminPassword) {
             res.json({ "Admin": "true" });
         }
@@ -60,12 +58,13 @@ app.get("/update/:id", async (req, res) => {
 app.post("/create", async (req, res) => {
     try {
         const { aadhar, name, gender, phone_num, address, room_no, rent, rent_paid } = req.body;
-        const newTenant = await pool.query("INSERT INTO tenant (Aadhar, Name, gender, phone_num, address, room_no, rent, rent_paid) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+        const newTenant = await pool.query("INSERT INTO tenant (aadhar, name, gender, phone_num, address, room_no, rent, rent_paid) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
             [aadhar, name, gender, phone_num, address, room_no, rent, rent_paid]
         );
-        res.json(newTenant.rows[0]);
+        res.json({ "Success": "true" });
     }
     catch (err) {
+        res.json({ "Success": "false" });
         console.error(err.message);
     }
 });
