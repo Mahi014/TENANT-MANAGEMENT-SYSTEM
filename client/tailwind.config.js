@@ -5,7 +5,8 @@ export default {
             "./src/components/admin-dashboard.jsx",
             "./src/components/CreatePage.jsx",
             "./src/components/UpdatePage.jsx",
-            "./src/components/ViewPage.jsx",],
+            "./src/components/ViewPage.jsx",
+          "./src/components/Card.jsx",],
   theme: {
     extend: {},
   },
