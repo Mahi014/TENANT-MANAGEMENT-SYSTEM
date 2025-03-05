@@ -34,7 +34,7 @@ app.post("/login", async (req, res) => {
 //get all tenant
 app.get("/view", async (req, res) => {
     try {
-        const allTenant = await pool.query("SELECT * FROM tenant");
+        const allTenant = await pool.query("SELECT * FROM tenant ORDER BY room_no ASC");
         res.json(allTenant.rows)
     }
     catch (err) {
@@ -72,7 +72,7 @@ app.post("/create", async (req, res) => {
 //update a tenant
 app.put("/update/:id", async (req, res) => {
     try {
-        const { name, gender, phone_num, address, room_no, rent, rent_paid } = req.body;
+        const { nameState, genderState, phone_numState, addressState, room_noState, rentState, rent_paidState } = req.body;
         const { id } = req.params;
         const tenantUpdate = await pool.query(
             `UPDATE tenant 
@@ -84,10 +84,12 @@ app.put("/update/:id", async (req, res) => {
                      rent = $6, 
                      rent_paid = $7 
                  WHERE aadhar = $8`,
-            [name, gender, phone_num, address, room_no, rent, rent_paid, id]
-        )
+            [nameState, genderState, phone_numState, addressState, room_noState, rentState, rent_paidState, id]
+        );
+        res.json({ "Success": "true" });
     }
     catch (err) {
+        res.json({ "Success": "false" });
         console.error(err.message);
     }
 });

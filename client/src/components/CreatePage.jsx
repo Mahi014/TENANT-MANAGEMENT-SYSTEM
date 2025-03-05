@@ -22,7 +22,6 @@ const CreatePage = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
-
             })
             const data = await response.json();
             if (response.ok && data.Success === "true") {
@@ -40,7 +39,6 @@ const CreatePage = () => {
                 setMessageColour(0);
                 setMessage('An unexpected error occurred. Please try again later. Go to view page.')
             }
-
         }
         catch (err) {
             console.error(err.message);
@@ -50,15 +48,11 @@ const CreatePage = () => {
     }
 
     return (
-        <div className='container flex  flex-col  justify-center items-center w-screen h-screen bg-blue-500 text-white'>
-
-
+        <div className='container flex flex-col justify-center items-center w-screen h-screen bg-blue-500 text-white'>
             <h2 className='text-xl font-bold'>Add a new tenant.</h2>
 
             <form onSubmit={handleSubmit} className='mt-4 border-2 border-white p-4 rounded-lg flex flex-col items-center space-y-4'>
-
                 <div className='flex flex-row space-x-4'>
-
                     <div className='flex flex-col space-y-1 text-lg'>
                         <label htmlFor="aadhar">Aadhar:</label>
                         <input
@@ -93,9 +87,9 @@ const CreatePage = () => {
                         onChange={(e) => setGender(e.target.value)}
                         required
                         className='border-2 border-gray-200 rounded-lg text-black outline-blue-600'
-                    > <option value="MALE">MALE</option>
+                    > 
+                        <option value="MALE">MALE</option>
                         <option value="FEMALE">FEMALE</option>
-
                     </select>
                 </div>
 
@@ -124,7 +118,6 @@ const CreatePage = () => {
                         />
                     </div>
                 </div>
-
 
                 <div className='flex flex-row space-x-4'>
                     <div className='flex flex-col space-y-1 text-lg'>
@@ -161,13 +154,17 @@ const CreatePage = () => {
                         onChange={(e) => setRentPaid(e.target.value)}
                         required
                         className='border-2 border-gray-200 rounded-lg text-black outline-blue-600'
-                    > <option value="NO">NO</option>
+                    > 
+                        <option value="NO">NO</option>
                         <option value="YES">YES</option>
                     </select>
                 </div>
 
-                <button type='submit' className="m-1 bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Submit</button>
+                <p className='text-sm text-yellow-200'>
+                    Enter the Aadhaar number carefully, as it cannot be updated at a later stage.
+                </p>
 
+                <button type='submit' className="m-1 bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Submit</button>
             </form>
             <Link
                 to="/view"

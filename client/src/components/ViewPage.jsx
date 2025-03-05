@@ -18,7 +18,6 @@ const ViewPage = () => {
   useEffect(() => {
     getTenant();
   }, []);
-console.log(tenants);
   return (
     <div className="container mx-auto min-h-screen bg-blue-500 text-white p-4">
 
