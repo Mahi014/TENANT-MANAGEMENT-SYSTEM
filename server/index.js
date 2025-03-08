@@ -42,18 +42,6 @@ app.get("/view", async (req, res) => {
     }
 });
 
-//get a tenant
-app.get("/update/:id", async (req, res) => {
-    try {
-        const { id } = req.params;
-        const tenant = await pool.query("SELECT * FROM tenant WHERE aadhar=$1", [id]);
-        res.json(tenant.roes[0]);
-    }
-    catch (err) {
-        console.log(err.message);
-    }
-});
-
 //Create a tenant
 app.post("/create", async (req, res) => {
     try {
