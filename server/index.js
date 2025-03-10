@@ -30,17 +30,31 @@ app.post("/login", async (req, res) => {
 });
 
 //Routes for CRUD
-
-//get all tenant
+// Get all tenants or search by name, aadhar, or room_no
 app.get("/view", async (req, res) => {
     try {
-        const allTenant = await pool.query("SELECT * FROM tenant ORDER BY room_no ASC");
-        res.json(allTenant.rows)
-    }
-    catch (err) {
+        const { search } = req.query;
+
+        let query = "SELECT * FROM tenant ORDER BY room_no ASC";
+        let values = [];
+
+        if (search) {
+            query = `SELECT * FROM tenant WHERE 
+                     name ILIKE $1 OR 
+                     aadhar::TEXT ILIKE $1 OR 
+                     room_no::TEXT ILIKE $1 
+                     ORDER BY room_no ASC`;
+            values = [`%${search}%`]; 
+        }
+
+        const result = await pool.query(query, values);
+        res.json(result.rows);
+    } catch (err) {
         console.error(err.message);
+        res.status(500).json({ error: "Server error" });
     }
 });
+
 
 //Create a tenant
 app.post("/create", async (req, res) => {
