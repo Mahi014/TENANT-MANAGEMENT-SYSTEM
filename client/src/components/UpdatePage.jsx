@@ -48,7 +48,7 @@ const UpdatePage = () => {
         <div className='container flex  flex-col  justify-center items-center w-screen h-screen bg-blue-500 text-white'>
 
 
-            <h2 className='text-xl font-bold'>Update a new tenant.</h2>
+            <h2 className='text-xl font-bold'>Update Tenant.</h2>
 
             <form onSubmit={handleSubmit} className='mt-4 border-2 border-white p-4 rounded-lg flex flex-col items-center space-y-4'>
 

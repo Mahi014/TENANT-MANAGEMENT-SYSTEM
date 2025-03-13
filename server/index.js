@@ -95,7 +95,6 @@ app.put("/update/:id", async (req, res) => {
         console.error(err.message);
     }
 });
-
 //delete a tenant
 app.delete("/view/:id", async (req, res) => {
     try {
