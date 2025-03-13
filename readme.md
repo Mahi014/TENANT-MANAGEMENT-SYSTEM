@@ -54,49 +54,39 @@ It helps PG owners manage **tenant details**, track **rent payments**, and perfo
 
 ### Setup Instructions  
 
-1. **Clone the repository:**  
+**Clone the repository:**  
    ```bash
    git clone https://github.com/Mahi014/TENANT-MANAGEMENT-SYSTEM.git
    cd TENANT-MANAGEMENT-SYSTEM
+   ```
 Navigate to the server directory and install dependencies:
-
-bash
-Copy
-Edit
+```bash
 cd server
 npm install
+```
 Create a .env file in the server directory with your database configuration:
-
-bash
-Copy
-Edit
+```bash
 PG_USER=Your_PostgreSQL_UserName
 PG_HOST=localhost
 PG_PASSWORD=Your_PostgreSQL_password
 PG_DATABASE=tenant_management_db
 PG_PORT=5432
 PORT=5000
-JWT_SECRET=your_secret_key
+```
 Start the backend server:
-
-bash
-Copy
-Edit
+```bash
 nodemon server.js
+```
 Navigate to the client directory and install dependencies:
-
-bash
-Copy
-Edit
+```bash
 cd ../client
 npm install
+```
 Start the client:
-
-bash
-Copy
-Edit
+```bash
 cd client
 npm start
+```
 Database Setup:
 To set up the database, refer to the SQL schema in server/database.sql.
 
