@@ -84,7 +84,6 @@ npm install
 ```
 Start the client:
 ```bash
-cd client
 npm start
 ```
 Database Setup:
