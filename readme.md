@@ -1,7 +1,12 @@
 # Tenant Management System  
 
-This is a **Tenant Management System** built with the **PERN stack (PostgreSQL, Express.js, React.js, Node.js)**.  
-It helps PG owners manage **tenant details**, track **rent payments**, and perform **CRUD operations**.  
+This is a **Tenant Management System** built with the **PERN stack** (PostgreSQL, Express.js, React.js, Node.js).
+
+**Features:**
+✅ Manage Tenant Details – Add, update, delete tenant records.
+✅ Track Rent Payments – Monitor rent status (Yes/No).
+✅ Search & Filter – Quickly search tenants by name, Aadhar, or room number.
+✅ Interactive UI – Built using React and Tailwind CSS for a smooth experience.
 
 # THIS IS HOW THE PROJECT LOOKS AFTER RUNNING:  
 
