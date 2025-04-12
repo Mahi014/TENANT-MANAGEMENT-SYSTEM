@@ -84,7 +84,9 @@ PG_HOST=localhost
 PG_PASSWORD=Your_PostgreSQL_password
 PG_DATABASE=tenant_management_db
 PG_PORT=5432
-PORT=5000
+SESSION_SECRET=your_session_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 ```
 Start the backend server:
 ```bash

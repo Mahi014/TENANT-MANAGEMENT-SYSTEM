@@ -6,10 +6,12 @@ const ViewPage = () => {
   const [tenants, setTenant] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); 
 
-  
   const getTenant = async (query = "") => {
     try {
-      const response = await fetch(`http://localhost:5000/view?search=${query}`);
+      const response = await fetch(`http://localhost:5000/view?search=${query}`, {
+        credentials: "include",
+        method: "get"
+      });
       const jsonData = await response.json();
       setTenant(jsonData);
     } catch (err) {
@@ -47,19 +49,25 @@ const ViewPage = () => {
         </div>
       </div>
       <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
-        {tenants.map((tenantItem) => (
-          <Card
-            key={tenantItem.aadhar}
-            aadhar={tenantItem.aadhar}
-            address={tenantItem.address}
-            gender={tenantItem.gender}
-            name={tenantItem.name}
-            phone_num={tenantItem.phone_num}
-            rent={tenantItem.rent}
-            rent_paid={tenantItem.rent_paid}
-            room_no={tenantItem.room_no}
-          />
-        ))}
+        {tenants.length === 0 ? (
+          <p className="text-center text-white col-span-full text-lg">
+            {searchTerm ? "No tenant matches your search." : "No tenants available."}
+          </p>
+        ) : (
+          tenants.map((tenantItem) => (
+            <Card
+              key={tenantItem.aadhar}
+              aadhar={tenantItem.aadhar}
+              address={tenantItem.address}
+              gender={tenantItem.gender}
+              name={tenantItem.name}
+              phone_num={tenantItem.phone_num}
+              rent={tenantItem.rent}
+              rent_paid={tenantItem.rent_paid}
+              room_no={tenantItem.room_no}
+            />
+          ))
+        )}
       </div>
     </div>
   );

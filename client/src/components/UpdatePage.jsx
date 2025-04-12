@@ -22,6 +22,7 @@ const UpdatePage = () => {
             
             const body = {nameState, phone_numState, addressState, room_noState, rentState, genderState, rent_paidState };
             const response = await fetch('http://localhost:5000/update/' + aadhar, {
+                credentials: "include",
                 method: 'put',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),

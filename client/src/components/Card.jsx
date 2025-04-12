@@ -7,7 +7,8 @@ const Card = (props) => {
     const deleteTenant = async (id) => {
         try {
             const response = await fetch(`http://localhost:5000/view/${id}`, {
-                method: "DELETE"
+                method: "DELETE",
+                credentials: "include",
             });
             window.location = "view";
         } catch (err) {

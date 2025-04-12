@@ -19,6 +19,7 @@ const CreatePage = () => {
         try {
             const body = { aadhar, name, phone_num, address, room_no, rent, gender, rent_paid };
             const response = await fetch('http://localhost:5000/create', {
+                credentials: "include",
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
