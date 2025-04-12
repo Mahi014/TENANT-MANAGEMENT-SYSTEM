@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Card from "./Card";
 
 const ViewPage = () => {
+  const navigate = useNavigate();
   const [tenants, setTenant] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); 
 
@@ -16,6 +17,25 @@ const ViewPage = () => {
       setTenant(jsonData);
     } catch (err) {
       console.error(err.message);
+    }
+  };
+
+  const handleLogout = async () => {
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+      try {
+        const res= await fetch("http://localhost:5000/logout", {
+          method: "GET",
+          credentials: "include",
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+          navigate("/login");
+        }
+      } catch (err) {
+        console.error("Logout failed: ", err.message);
+      }
     }
   };
 
@@ -40,14 +60,23 @@ const ViewPage = () => {
             onChange={handleSearch}
             className="p-2 rounded-lg border text-black shadow-md w-96"
           />
-          <Link 
-            to="/create" 
-            className="bg-gray-800 hover:bg-gray-900 text-white font-medium rounded-lg text-sm px-5 py-2.5 shadow-md transition duration-300"
-          >
-            ➕ Add Tenant
-          </Link>
+          <div className="flex space-x-4">
+            <Link 
+              to="/create" 
+              className="bg-gray-800 hover:bg-gray-900 text-white font-medium rounded-lg text-sm px-5 py-2.5 shadow-md transition duration-300"
+            >
+              ➕ Add Tenant
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg text-sm px-5 py-2.5 shadow-md transition duration-300"
+            >
+              <i className="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </div>
         </div>
       </div>
+
       <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
         {tenants.length === 0 ? (
           <p className="text-center text-white col-span-full text-lg">

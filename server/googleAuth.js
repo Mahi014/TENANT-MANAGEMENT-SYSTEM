@@ -51,7 +51,7 @@ export const googleAuthRoutes = (app) => {
     app.get("/logout", (req, res) => {
         req.logout((err) => {
             if (err) return next(err);
-            res.redirect("http://localhost:3000");
+            res.json({ success: true });
         });
     });
 };
