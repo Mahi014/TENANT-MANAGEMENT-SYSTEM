@@ -9,6 +9,8 @@ It helps **PG owners** manage tenant details, track rent payments, and perform C
 - ✅ **Track Rent Payments** – Monitor rent status (Yes/No).
 - ✅ **Search & Filter** – Quickly search tenants by **name, Aadhar, or room number**.
 - ✅ **Interactive UI** – Built using **React and Tailwind CSS** for a smooth experience.
+- ✅ **Google OAuth Authentication** – Implemented secure login with Google OAuth.
+- ✅ **Session-Based Authentication** – Added session management using PostgreSQL and express-session.
 
 ## Tech Stack 🛠️
 
