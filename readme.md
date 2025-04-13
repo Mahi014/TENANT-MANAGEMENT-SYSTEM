@@ -1,7 +1,7 @@
 # Tenant Management System (PERN Stack)
 
 This is a **Tenant Management System** built with the **PERN stack (PostgreSQL, Express.js, React.js, Node.js)**.  
-It helps **PG owners** manage tenant details, track rent payments, and perform CRUD operations.
+It helps **PG owners** manage tenant details, and perform CRUD operations.
 
 ## Features 🚀
 
