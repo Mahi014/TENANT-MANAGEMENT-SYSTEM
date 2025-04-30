@@ -15,11 +15,9 @@ passport.use(new GoogleStrategy({
     const email = profile._json.email; 
     const id = profile.id;
 
-    // Check if the user exists in the database
     const result = await pool.query("SELECT * FROM users WHERE google_id = $1", [id]);
     
     if (result.rows.length === 0) {
-        // If not, create a new user
         await pool.query("INSERT INTO users (email, google_id) VALUES ($1, $2)", [email, id]);
     }
 
@@ -45,13 +43,5 @@ export const googleAuthRoutes = (app) => {
     // Callback route where Google will send the user after authentication
     app.get("/auth/google/callback", passport.authenticate("google", { failureRedirect: "http://localhost:3000" }), (req, res) => {
         res.redirect("http://localhost:3000/admin-dashboard"); 
-    });
-
-    // Logout Route
-    app.get("/logout", (req, res) => {
-        req.logout((err) => {
-            if (err) return next(err);
-            res.json({ success: true });
-        });
     });
 };
